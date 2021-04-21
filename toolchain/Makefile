@@ -44,7 +44,6 @@ build-gcc-1: $(WORKDIR)/build-gcc
 	$(MAKE) -C $(WORKDIR)/build-gcc install DESTDIR= > $(LOG)
 $(WORKDIR)/build-gcc:
 	#cd $(WORKDIR)/gcc-$(GCC_VERSION) && patch -p1 -i $(FILESDIR)/gcc.patch
-	wget 
 	cd $(WORKDIR)/gcc-$(GCC_VERSION) && ./contrib/download_prerequisites
 	mkdir -p $@
 	cd $@ && ../gcc-$(GCC_VERSION)/configure --target=m68k-elf --prefix=$(BUILDDIR) --without-headers --with-newlib --enable-languages=c --disable-libssp --disable-tls --with-cpu=m68000 --disable-werror --disable-nls --disable-multilib --disable-libquadmath
