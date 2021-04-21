@@ -16,7 +16,10 @@ VER?=dev
 
 PATH := $(BUILDDIR)/bin:$(PATH)
 
-build: toolchain_build tools_build sgdk_build
+build:
+	$(MAKE) toolchain_build
+	$(MAKE) tools_build
+	$(MAKE) sgdk_build
 	echo "Done"
 
 $(BUILDDIR):

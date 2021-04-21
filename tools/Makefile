@@ -21,7 +21,10 @@ endif
 TOOLS+=$(TOOLSDIR)/sixpack 
 TOOLS+=$(TOOLSDIR)/appack
 
-tools_build: $(WORKDIR) $(TOOLSDIR) $(TOOLS)
+tools_build:
+	$(MAKE) $(WORKDIR)
+	$(MAKE) $(TOOLSDIR)
+	$(MAKE) $(TOOLS)
 	-cp ../extras/scripts/*.* $(TOOLSDIR)/.
 	echo "Done with tools."
 

@@ -1,6 +1,6 @@
 GENDEV?=/opt/gendev/
 SUDO?= sudo
-MAKE?= make -j 9
+MAKE= make -j 9
 TOPDIR?=$(CURDIR)/..
 TCDIR=$(TOPDIR)/toolchain
 BUILDDIR?=$(TOPDIR)/build
@@ -15,7 +15,14 @@ LOG?=/dev/null
 
 PATH := $(BUILDDIR)/bin:$(PATH)
 
-toolchain_build: $(BUILDDIR) setup build-binutils build-gcc-1 build-newlib build-gcc-2 build-ldscripts
+toolchain_build:
+	$(MAKE) $(BUILDDIR)
+	$(MAKE) setup
+	$(MAKE) build-binutils
+	$(MAKE) build-gcc-1
+	$(MAKE) build-newlib
+	$(MAKE) build-gcc-2
+	$(MAKE) build-ldscripts
 	echo "Toolchain done"
 
 toolchain_params:
