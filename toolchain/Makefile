@@ -89,12 +89,13 @@ $(WORKDIR)/%: $(FILESDIR)/%
 	cd $(WORKDIR) && \
 		tar xf $<.*
 
+$(FILESDIR)/gcc-10-arm-20210220.tar.gz:
+	cd $(FILESDIR) && wget https://github.com/fxcoudert/gcc/archive/gcc-10-arm-20210220.tar.gz
 $(FILESDIR)/%:
 	@echo "Will extract $@"
 
-setup: $(WORKDIR) $(FILESDIR)/gcc-10-arm-20210220.tar.gz $(PKGS)
+setup: $(WORKDIR) $(FILESDIR)/gcc-10-arm-20210220.tar.gz $(WORKDIR)/gcc-10-arm-20210220 $(PKGS)
 	echo $< $@
 	@echo "Setup done"
 
-$(FILESDIR)/gcc-10-arm-20210220.tar.gz:
-	cd $(FILESDIR) && wget https://github.com/fxcoudert/gcc/archive/gcc-10-arm-20210220.tar.gz
+
