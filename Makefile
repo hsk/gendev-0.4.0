@@ -9,7 +9,7 @@ MAKE?= make -j 9
 ORIG_USER:=$(shell whoami)
 
 BUILDDIR?=$(CURDIR)/build
-GENDEV=/opt/gendev-0.4.0/
+GENDEV?=/opt/gendev-0.4.0/
 TOPDIR=$(CURDIR)
 
 VER?=dev
