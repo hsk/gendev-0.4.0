@@ -101,7 +101,10 @@ $(FILESDIR)/gcc-10-arm-20210220.tar.gz:
 $(FILESDIR)/%:
 	@echo "Will extract $@"
 
-setup: $(WORKDIR) $(FILESDIR)/gcc-10-arm-20210220.tar.gz $(WORKDIR)/gcc-10-arm-20210220 $(PKGS)
+setup: $(WORKDIR)
+	make $(FILESDIR)/gcc-10-arm-20210220.tar.gz
+	make $(WORKDIR)/gcc-10-arm-20210220
+	make $(PKGS)
 	echo $< $@
 	@echo "Setup done"
 
