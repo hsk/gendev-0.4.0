@@ -30,13 +30,16 @@ INCS = -Iinc -Ires
 FLAGS = $(OPTION) -m68000 -Wall -O1 -c -fomit-frame-pointer $(INCS)
 FLAGSZ80 = -isrc -iinc
 
-all: appack $(libmd.a_OBJS) libmd.a
+all:
+	$(MAKE) appack
+	$(MAKE) $(libmd.a_OBJS)
+	$(MAKE) libmd.a
 
 appack:
 	echo -n "osBits="> tools/appack/makefile.vars
 	getconf LONG_BIT >> tools/appack/makefile.vars
 	cp ../../tools/files/applib/example/makefile.darwin2 tools/appack/makefile.darwin
-	cd tools/appack/ && make -f makefile.$(EXT)
+	cd tools/appack/ && make j1 -f makefile.$(EXT)
 	cp tools/appack/appack bin/
 
 %.a: $(libmd.a_OBJS)
