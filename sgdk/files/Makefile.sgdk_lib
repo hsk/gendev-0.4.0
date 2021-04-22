@@ -43,11 +43,8 @@ appack:
 
 %.a: $(libmd.a_OBJS)
 	$(RM) $@
-	echo "AR********************"
 	$(AR) cru $@ $($@_OBJS)
-	echo "RANLIB"
 	$(RANLIB) $@
-	echo "RANLIB OK"
 
 %.o80: %.s80
 	$(ASMZ80) $(FLAGSZ80) $< $@ out.lst
