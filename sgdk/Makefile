@@ -36,12 +36,12 @@ $(SGDKDIR)/libmd.a: prep
 	cd $(SGDKDIR) && ln -sf ../files/Makefile.sgdk_lib .
 	cd $(SGDKDIR) && $(MAKE) -f Makefile.sgdk_lib
 
-$(SGDKINSTALLDIR):
+$(SGDKINSTALLDIR): all
 	mkdir -p $@
 	rm -f $(GENDEV)/sgdk
 	cd $(GENDEV) && ln -sf sgdk$(SGDKVER) sgdk
 
-install: tools $(SGDKDIR)/libmd.a $(SGDKINSTALLDIR)
+install: $(SGDKINSTALLDIR)
 	echo "Install"
 	mkdir -p $(GENDEV)/sgdk/src
 	mkdir -p $(GENDEV)/sgdk/inc
