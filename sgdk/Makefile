@@ -1,3 +1,4 @@
+MAKE?=make -j9
 GENDEV?=/opt/gendev/
 GENBIN=$(GENDEV)/bin
 GENGCC_BIN=$(GENDEV)/bin
@@ -7,7 +8,10 @@ SAMPLESDIR=$(SGDKDIR)/sample
 SGDKVER=v1.40
 SGDKINSTALLDIR=$(GENDEV)/sgdk$(SGDKVER)
 
-all: tools $(SGDKDIR) $(SGDKDIR)/libmd.a
+all:
+	$(MAKE) tools
+	$(MAKE) $(SGDKDIR)
+	$(MAKE) $(SGDKDIR)/libmd.a
 
 tools: $(SGDKDIR)
 	cd $(SGDKDIR)/tools/bintos/src && \
