@@ -34,7 +34,7 @@ $(SGDKDIR):
 $(SGDKDIR)/libmd.a: prep
 	cp -rf ../tools/files/applib/lib $(SGDKDIR)/tools/appack
 	cd $(SGDKDIR) && ln -sf ../files/Makefile.sgdk_lib .
-	cd $(SGDKDIR) && $(MAKE) -f Makefile.sgdk_lib
+	cd $(SGDKDIR) && make -f Makefile.sgdk_lib
 
 $(SGDKINSTALLDIR): all
 	mkdir -p $@
