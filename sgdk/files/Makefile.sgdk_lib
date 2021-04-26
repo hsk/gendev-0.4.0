@@ -41,9 +41,9 @@ appack:
 	cd tools/appack/ && make -f makefile.$(EXT)
 	cp tools/appack/appack bin/
 
-%.a: $(libmd.a_OBJS)
+%.a: $(libmd.a_OBJS) $(RESOURCES1)
 	$(RM) $@
-	$(AR) cru $@ $($@_OBJS)
+	$(AR) cru $@ $($@_OBJS) $(RESOURCES1)
 	$(RANLIB) $@
 
 %.o80: %.s80
@@ -63,7 +63,7 @@ appack:
 
 clean:
 	#$(RM) -f z80_drv1.c z80_drv2.c
-	$(RM) $(RESOURCES)
+	$(RM) $(RESOURCES) $(RESOURCES1)
 	$(RM) -rf *.o *.a *.o80 *.log *.lst
 
 install: all
