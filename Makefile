@@ -2,7 +2,7 @@
 # HINT: If makeinfo is missing on Ubuntu, install texinfo package.
 #
 
-SUDO=
+SUDO?= sudo
 MGET?= wget
 MAKE?= make -j 9
 
